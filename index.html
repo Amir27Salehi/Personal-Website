@@ -7,28 +7,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-dark: #0a0a0a;
-            --secondary-dark: #1a1a1a;
-            --tertiary-dark: #2a2a2a;
-            --accent-primary: #fc5c7d;
-            --accent-secondary: #6a82fb;
-            --accent-tertiary: #42e695;
-            --accent-quaternary: #ff9f43;
-            --accent-purple: #9c27b0;
-            --accent-teal: #00bcd4;
-            --accent-orange: #ff5722;
-            --text-light: #ffffff;
-            --text-muted: rgba(255, 255, 255, 0.7);
-            --text-dark: #333333;
-            --gradient-main: linear-gradient(135deg, #fc5c7d 0%, #6a82fb 100%);
-            --gradient-secondary: linear-gradient(135deg, #42e695 0%, #667eea 100%);
-            --gradient-purple: linear-gradient(135deg, #9c27b0 0%, #e91e63 100%);
-            --gradient-teal: linear-gradient(135deg, #00bcd4 0%, #4caf50 100%);
-            --gradient-orange: linear-gradient(135deg, #ff5722 0%, #ff9800 100%);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
+       :root {
+    --primary-dark: #F0EDCC;
+    --secondary-dark: #F0EDCC;
+    --tertiary-dark: #F0EDCC;
+    --accent-primary: #02343F;
+    --accent-secondary: #02343F;
+    --accent-tertiary: #02343F;
+    --accent-quaternary: #02343F;
+    --accent-purple: #02343F;
+    --accent-teal: #02343F;
+    --accent-orange: #02343F;
+    --text-light: #02343F;
+    --text-muted: rgba(2, 52, 63, 0.7);
+    --text-dark: #02343F;
+    --gradient-main: #02343F;
+    --gradient-secondary: #02343F;
+    --gradient-purple: #02343F;
+    --gradient-teal: #02343F;
+    --gradient-orange: #02343F;
+    --glass-bg: rgba(2, 52, 63, 0.05);
+    --glass-border: rgba(2, 52, 63, 0.15);
+}
 
         * {
             margin: 0;
@@ -128,18 +128,18 @@
             margin: 0 2px;
         }
 
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-main);
-            transition: left 0.4s ease;
-            border-radius: 50px;
-            z-index: -1;
-        }
+.nav-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #02343F;  /* Change this */
+    transition: left 0.4s ease;
+    border-radius: 50px;
+    z-index: -1;
+}
 
         .nav-item:hover::before,
         .nav-item.active::before {
@@ -176,29 +176,32 @@
             z-index: 5;
         }
 
-        .hero-title {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 900;
-            margin-bottom: 20px;
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
-            position: relative;
-        }
+.hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: #02343F;  /* Add this line */
+    /* Remove or comment out these lines:
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    */
+    letter-spacing: -0.02em;
+    position: relative;
+}
 
         .hero-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--gradient-main);
-            border-radius: 2px;
-        }
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: #02343F;  /* Change this */
+    border-radius: 2px;
+}
 
         .hero-subtitle {
             font-size: clamp(1.2rem, 3vw, 2rem);
@@ -242,31 +245,29 @@
             backdrop-filter: blur(20px);
         }
 
-        .social-node:hover {
-            transform: translateY(-8px) scale(1.1);
-            background: var(--gradient-main);
-            box-shadow: 0 20px 40px rgba(252, 92, 125, 0.4);
-            border-color: var(--accent-primary);
-        }
+.social-node:hover {
+    transform: translateY(-8px) scale(1.1);
+    background: #02343F;  /* Change this */
+}
 
         .social-node:nth-child(2n):hover {
             background: var(--gradient-secondary);
-            box-shadow: 0 20px 40px rgba(66, 230, 149, 0.4);
+            box-shadow: 0 20px 40px rgba(80, 146, 86, 0.4);
         }
 
         .social-node:nth-child(3n):hover {
             background: var(--gradient-purple);
-            box-shadow: 0 20px 40px rgba(156, 39, 176, 0.4);
+            box-shadow: 0 20px 40px rgba(12, 104, 21, 0.4);
         }
 
         .social-node:nth-child(4n):hover {
             background: var(--gradient-teal);
-            box-shadow: 0 20px 40px rgba(0, 188, 212, 0.4);
+            box-shadow: 0 20px 40px rgba(118, 183, 86, 0.4);
         }
 
         .social-node:nth-child(5n):hover {
             background: var(--gradient-orange);
-            box-shadow: 0 20px 40px rgba(255, 87, 34, 0.4);
+            box-shadow: 0 20px 40px rgba(103, 129, 89, 0.4);
         }
 
         /* Innovative Section Design */
@@ -286,17 +287,16 @@
             z-index: 2;
         }
 
-        .section-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 60px;
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-        }
+.section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #02343F;  /* Add this */
+    /* Remove gradient background clip */
+    position: relative;
+    letter-spacing: -0.01em;
+}
 
         .section-title::before {
             content: '';
@@ -732,15 +732,25 @@
             transform: translateY(-10px) scale(1.05);
         }
 
-        .metric-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+.metric-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: #02343F;  /* Add this */
+    /* Remove these:
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    */
+}
+
+/* Remove or update all the .metric-card:nth-child variations */
+.metric-card:nth-child(2) .metric-number,
+.metric-card:nth-child(3) .metric-number,
+.metric-card:nth-child(4) .metric-number {
+    color: #02343F;
+}
 
         .metric-card:nth-child(2) .metric-number {
             background: var(--gradient-secondary);
@@ -971,15 +981,12 @@
             line-height: 1.2;
         }
 
-        .review-count {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 5px;
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+.review-count {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    color: #02343F;  /* Add this instead of gradient */
+}
 
         .review-label {
             color: var(--text-muted);
@@ -1015,18 +1022,18 @@
             transform: translateY(-3px);
         }
 
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-main);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: white;
-            margin: 0 auto 12px;
-        }
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background: #02343F;  /* Change this */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #F0EDCC;  /* Icon color */
+    margin: 0 auto 12px;
+}
 
         .contact-form {
             background: var(--glass-bg);
@@ -1072,21 +1079,21 @@
             min-height: 100px;
         }
 
-        .btn-primary {
-            background: var(--gradient-main);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 20px;
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            text-decoration: none;
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-        }
+.btn-primary {
+    background: #02343F;  /* Change this */
+    border: none;
+    padding: 12px 30px;
+    border-radius: 20px;
+    color: #F0EDCC;  /* Change text color */
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
 
         .btn-primary::before {
             content: '';
@@ -1766,8 +1773,68 @@
                     <div class="teaching-subject" style="font-size: 1.1rem; font-weight: 600; color: var(--text-light); margin-bottom: 8px;">Principles of Information and Technology</div>
                     <div class="teaching-role" style="color: var(--accent-secondary); font-size: 0.9rem; font-weight: 500; margin-bottom: 5px;">Course Instructor</div>
                     <div class="teaching-institution" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 5px;">Mazandaran University of Science and Technology</div>
-                    <div class="teaching-year" style="color: var(--accent-tertiary); font-size: 0.8rem; font-weight: 600;">Current</div>
+                    <div class="teaching-year" style="color: var(--accent-tertiary); font-size: 0.8rem; font-weight: 600;">Oct 2025</div>
                 </div>
+
+
+
+                <div class="teaching-item" style="background: rgba(255, 255, 255, 0.03); border-radius: 15px; padding: 20px; margin-bottom: 15px; transition: all 0.3s ease;">
+                    <div class="teaching-subject" style="font-size: 1.1rem; font-weight: 600; color: var(--text-light); margin-bottom: 8px;">Foundation of Machine Learning and Artificial Intelligence</div>
+                    <div class="teaching-role" style="color: var(--accent-secondary); font-size: 0.9rem; font-weight: 500; margin-bottom: 5px;">Course Instructor</div>
+                    <div class="teaching-institution" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 5px;">Mazandaran University of Science and Technology</div>
+                    <div class="teaching-year" style="color: var(--accent-tertiary); font-size: 0.8rem; font-weight: 600;">Feb 2026</div>
+                </div>
+
+
+                <div class="teaching-item" style="background: rgba(255, 255, 255, 0.03); border-radius: 15px; padding: 20px; margin-bottom: 15px; transition: all 0.3s ease;">
+                    <div class="teaching-subject" style="font-size: 1.1rem; font-weight: 600; color: var(--text-light); margin-bottom: 8px;">Computer Programming</div>
+                    <div class="teaching-role" style="color: var(--accent-secondary); font-size: 0.9rem; font-weight: 500; margin-bottom: 5px;">Course Instructor</div>
+                    <div class="teaching-institution" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 5px;">Babol Noshirvani University of Technology</div>
+                    <div class="teaching-year" style="color: var(--accent-tertiary); font-size: 0.8rem; font-weight: 600;">Feb 2026</div>
+                </div>
+
+
+                <div class="teaching-item" style="background: rgba(255, 255, 255, 0.03); border-radius: 15px; padding: 20px; margin-bottom: 15px; transition: all 0.3s ease;">
+                    <div class="teaching-subject" style="font-size: 1.1rem; font-weight: 600; color: var(--text-light); margin-bottom: 8px;">Computer Programming</div>
+                    <div class="teaching-role" style="color: var(--accent-secondary); font-size: 0.9rem; font-weight: 500; margin-bottom: 5px;">Course Instructor</div>
+                    <div class="teaching-institution" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 5px;">Babol Noshirvani University of Technology</div>
+                    <div class="teaching-year" style="color: var(--accent-tertiary); font-size: 0.8rem; font-weight: 600;">Feb 2026</div>
+                </div>
+
+
+
+
+                <div class="teaching-item" style="background: rgba(255, 255, 255, 0.03); border-radius: 15px; padding: 20px; margin-bottom: 15px; transition: all 0.3s ease;">
+                    <div class="teaching-subject" style="font-size: 1.1rem; font-weight: 600; color: var(--text-light); margin-bottom: 8px;">Computers Application in Industrail Engineering (Machine Learning in Py)</div>
+                    <div class="teaching-role" style="color: var(--accent-secondary); font-size: 0.9rem; font-weight: 500; margin-bottom: 5px;">Course Instructor</div>
+                    <div class="teaching-institution" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 5px;">Babol Noshirvani University of Technology</div>
+                    <div class="teaching-year" style="color: var(--accent-tertiary); font-size: 0.8rem; font-weight: 600;">Feb 2026</div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </div>
 
@@ -1923,24 +1990,7 @@
             <div class="section-content">
                 <h2 class="section-title fade-in">Research & Publications</h2>
                 
-                <div class="research-metrics fade-in">
-                    <div class="metric-card">
-                        <div class="metric-number">81</div>
-                        <div class="metric-label">Total Citations</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-number">4</div>
-                        <div class="metric-label">h-index</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-number">10</div>
-                        <div class="metric-label">ISI-Q1/Q2 Publications</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-number">15</div>
-                        <div class="metric-label">Total Papers</div>
-                    </div>
-                </div>
+
 
                 <div class="morph-card fade-in">
                     <h3 class="card-title">📚 Publications</h3>
@@ -2268,192 +2318,149 @@
 </section>
 
 
-
-        <!-- Academic Services Section -->
+<!-- Academic Services Section -->
         <section id="academic" class="section">
             <div class="section-content">
                 <h2 class="section-title fade-in">Academic Contributions</h2>
                 
-                <div class="academic-services fade-in">
-                    <div class="service-section">
+                <div class="academic-services fade-in" style="grid-template-columns: 1fr; max-width: 900px; margin: 40px auto;">
+                    <!-- Editorial Roles -->
+                    <div class="service-section" style="border: 2px solid rgba(2, 52, 63, 0.15); box-shadow: 0 4px 15px rgba(2, 52, 63, 0.1);">
                         <div class="service-title">
                             <i class="fas fa-edit"></i>
                             Editorial Roles
                         </div>
                         
-                        <div class="editorial-item">
+                        <div class="editorial-item" style="border: 2px solid rgba(2, 52, 63, 0.1); box-shadow: 0 2px 8px rgba(2, 52, 63, 0.08);">
                             <div class="editorial-role">Editorial Board Member</div>
                             <div class="editorial-journal">Edelweiss Applied Science and Technology Journal</div>
-                            <div class="editorial-ranking">Q3</div>
                         </div>
                         
-                        <div class="editorial-item">
+                        <div class="editorial-item" style="border: 2px solid rgba(2, 52, 63, 0.1); box-shadow: 0 2px 8px rgba(2, 52, 63, 0.08);">
                             <div class="editorial-role">Editor Assistant</div>
                             <div class="editorial-journal">Scientia Iranica Journal: Transaction E</div>
-                            <div class="editorial-ranking">Q2</div>
                         </div>
                     </div>
                     
-                    <div class="service-section">
+                    <!-- Peer Review Activities -->
+                    <div class="service-section" style="border: 2px solid rgba(2, 52, 63, 0.15); box-shadow: 0 4px 15px rgba(2, 52, 63, 0.1);">
                         <div class="service-title">
                             <i class="fas fa-search"></i>
-                            Peer Review Activities
+                            +100 Peer Review Activities
                         </div>
                         
                         <div class="peer-review-grid">
                             <div class="journal-review-card">
                                 <div class="journal-name">Expert Systems with Applications</div>
-                                <div class="review-count">43</div>
-                                <div class="review-label">Reviews</div>
                             </div>
                             
                             <div class="journal-review-card">
-                                <div class="journal-name">Decision analytics journal</div>
-                                <div class="review-count">12</div>
-                                <div class="review-label">Reviews</div>
+                                <div class="journal-name">Decision Analytics Journal</div>
                             </div>
-
-                 
 
                             <div class="journal-review-card">
                                 <div class="journal-name">Journal Of Cloud Computing</div>
-                                <div class="review-count">1</div>
-                                <div class="review-label">Reviews</div>
                             </div>
                             
                             <div class="journal-review-card">
                                 <div class="journal-name">Knowledge-based Systems</div>
-                                <div class="review-count">6</div>
-                                <div class="review-label">Reviews</div>
                             </div>
-
 
                             <div class="journal-review-card">
                                 <div class="journal-name">Iranian Journal of Science and Technology, Transactions of Civil Engineering</div>
-                                <div class="review-count">1</div>
-                                <div class="review-label">Reviews</div>
                             </div>
-
 
                             <div class="journal-review-card">
-                                <div class="journal-name">
-Knowledge and Information Systems</div>
-                                <div class="review-count">1</div>
-                                <div class="review-label">Reviews</div>
+                                <div class="journal-name">Knowledge and Information Systems</div>
                             </div>
-
-
 
                             <div class="journal-review-card">
-                                <div class="journal-name">
-Iranian Journal of Science and Technology, Transactions of Electrical Engineering</div>
-                                <div class="review-count">1</div>
-                                <div class="review-label">Reviews</div>
+                                <div class="journal-name">Iranian Journal of Science and Technology, Transactions of Electrical Engineering</div>
                             </div>
-
-
                             
                             <div class="journal-review-card">
                                 <div class="journal-name">Neurocomputing</div>
-                                <div class="review-count">4</div>
-                                <div class="review-label">Reviews</div>
                             </div>
                             
                             <div class="journal-review-card">
                                 <div class="journal-name">Scientific African</div>
-                                <div class="review-count">4</div>
-                                <div class="review-label">Reviews</div>
                             </div>
                             
                             <div class="journal-review-card">
                                 <div class="journal-name">Neural Networks</div>
-                                <div class="review-count">2</div>
-                                <div class="review-label">Reviews</div>
                             </div>
                             
                             <div class="journal-review-card">
                                 <div class="journal-name">Energy Conversion and Management</div>
-                                <div class="review-count">2</div>
-                                <div class="review-label">Reviews</div>
                             </div>
                             
                             <div class="journal-review-card">
                                 <div class="journal-name">Annals of Operations Research</div>
-                                <div class="review-count">1</div>
-                                <div class="review-label">Review</div>
                             </div>
                             
                             <div class="journal-review-card">
-                                <div class="journal-name">SSM, population health</div>
-                                <div class="review-count">1</div>
-                                <div class="review-label">Review</div>
+                                <div class="journal-name">SSM, Population Health</div>
                             </div>
 
                             <div class="journal-review-card">
                                 <div class="journal-name">Discover Internet of Things</div>
-                                <div class="review-count">1</div>
-                                <div class="review-label">Review</div>
                             </div>
 
                             <div class="journal-review-card">
                                 <div class="journal-name">Scientific Reports</div>
-                                <div class="review-count">11</div>
-                                <div class="review-label">Review</div>
                             </div>
                             
                             <div class="journal-review-card">
                                 <div class="journal-name">Evaluation and Program Planning</div>
-                                <div class="review-count">2</div>
-                                <div class="review-label">Review</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Contact Section -->
-<!-- Replace the existing contact section with this updated version -->
+        </section>      <!-- Contact Section -->
 <section id="contact" class="section">
     <div class="section-content">
         <h2 class="section-title fade-in">Get In Touch</h2>
         
         <div class="floating-contact fade-in">
-            <div class="contact-info">
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="card-title">Email</div>
-                    <div class="card-text">
-                        amir27salehi@yahoo.com<br>
-                        sar.salehiamiri@ie.sharif.edu
-                    </div>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="card-title">Phone</div>
-                    <div class="card-text">+98 938 204 9029</div>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="card-title">Location</div>
-                    <div class="card-text">Mazandaran, Babol, Iran</div>
-                </div>
-            </div>
-            
-            <!-- New Interactive Social Media Section -->
+            <!-- Interactive Social Media Section with Email -->
             <div class="social-media-hub">
                 <h3 class="social-hub-title">Connect With Me</h3>
                 <p class="social-hub-subtitle">Let's connect and collaborate across platforms</p>
                 
                 <div class="social-grid">
+                    <!-- Yahoo Email -->
+                    <a href="mailto:amir27salehi@yahoo.com" class="social-card email-card">
+                        <div class="social-card-inner">
+                            <div class="social-icon-wrapper">
+                                <i class="fab fa-yahoo"></i>
+                                <div class="social-glow"></div>
+                            </div>
+                            <div class="social-info">
+                                <h4 class="social-platform">Yahoo Email</h4>
+                                <p class="social-handle">amir27salehi@yahoo.com</p>
+                                <span class="social-cta">Email →</span>
+                            </div>
+                        </div>
+                        <div class="social-hover-effect"></div>
+                    </a>
+
+                    <!-- University Email -->
+                    <a href="mailto:sar.salehiamiri@ie.sharif.edu" class="social-card email-card">
+                        <div class="social-card-inner">
+                            <div class="social-icon-wrapper">
+                                <i class="fas fa-university"></i>
+                                <div class="social-glow"></div>
+                            </div>
+                            <div class="social-info">
+                                <h4 class="social-platform">University Email</h4>
+                                <p class="social-handle">sar.salehiamiri@ie.sharif.edu</p>
+                                <span class="social-cta">Email →</span>
+                            </div>
+                        </div>
+                        <div class="social-hover-effect"></div>
+                    </a>
+
                     <!-- LinkedIn -->
                     <a href="https://ir.linkedin.com/in/amirreza-salehi-992592259" target="_blank" class="social-card linkedin">
                         <div class="social-card-inner">
@@ -2538,7 +2545,7 @@ Iranian Journal of Science and Technology, Transactions of Electrical Engineerin
                     <a href="https://independent.academia.edu/AmirrezaSalehi5" target="_blank" class="social-card academia">
                         <div class="social-card-inner">
                             <div class="social-icon-wrapper">
-                                <i class="fas fa-university"></i>
+                                <i class="fas fa-book"></i>
                                 <div class="social-glow"></div>
                             </div>
                             <div class="social-info">
@@ -2550,37 +2557,10 @@ Iranian Journal of Science and Technology, Transactions of Electrical Engineerin
                         <div class="social-hover-effect"></div>
                     </a>
                 </div>
-
-                <!-- Interactive Stats -->
-                <div class="social-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">3000+</div>
-                        <div class="stat-label">Connections</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">81</div>
-                        <div class="stat-label">Citations</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">15</div>
-                        <div class="stat-label">Publications</div>
-                    </div>
-                </div>
-
-                <!-- Call to Action -->
-                <div class="social-cta-section">
-                    <p class="cta-text">Ready to collaborate? Choose your preferred platform above!</p>
-                    <div class="cta-badges">
-                        <span class="cta-badge">🤝 Open to Collaboration</span>
-                        <span class="cta-badge">📧 Quick Response</span>
-                        <span class="cta-badge">🌍 Global Network</span>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </section>
-
 <style>
 /* Social Media Hub Styles */
 .social-media-hub {
@@ -2593,6 +2573,8 @@ Iranian Journal of Science and Technology, Transactions of Electrical Engineerin
     overflow: hidden;
 }
 
+/* REMOVE or COMMENT OUT this entire section: */
+/*
 .social-media-hub::before {
     content: '';
     position: absolute;
@@ -2605,14 +2587,13 @@ Iranian Journal of Science and Technology, Transactions of Electrical Engineerin
     opacity: 0.3;
     pointer-events: none;
 }
+*/
 
 .social-hub-title {
     font-size: 1.8rem;
     font-weight: 700;
-    background: var(--gradient-main);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #02343F;  /* Add this */
+    /* Remove gradient */
     text-align: center;
     margin-bottom: 10px;
 }
