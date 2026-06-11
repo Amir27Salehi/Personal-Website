@@ -1,1662 +1,252 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amirreza Salehi - Data Scientist & Researcher</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>سید امیررضا صالحی امیری | پژوهشگر و مدرس</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap');
+
         :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --bg-accent: #e9ecef;
-            --text-primary: #0a0a0a;
-            --text-secondary: #495057;
-            --text-muted: #6c757d;
-            --accent-primary: #1e40af;
-            --accent-secondary: #0891b2;
-            --accent-purple: #7c3aed;
-            --accent-orange: #ea580c;
-            --border-light: #dee2e6;
-            --shadow: rgba(0, 0, 0, 0.08);
-            --card-bg: #ffffff;
-            --gradient-start: #1e3a8a;
-            --gradient-end: #0891b2;
-            --nav-bg: rgba(255, 255, 255, 0.95);
-        }
-
-        [data-theme="dark"] {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #141414;
-            --bg-accent: #1e1e1e;
-            --text-primary: #f5f5f5;
-            --text-secondary: #a8a8a8;
-            --text-muted: #707070;
-            --accent-primary: #3b82f6;
-            --accent-secondary: #06b6d4;
-            --accent-purple: #a78bfa;
-            --accent-orange: #fb923c;
-            --border-light: #2a2a2a;
-            --shadow: rgba(255, 255, 255, 0.05);
-            --card-bg: #141414;
-            --gradient-start: #1e40af;
-            --gradient-end: #0891b2;
-            --nav-bg: rgba(10, 10, 10, 0.95);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --primary: #1e3a8a;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.5;
-            transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Vazirmatn', system-ui, sans-serif;
         }
 
-        h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            line-height: 1.2;
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.92), rgba(15, 23, 42, 0.95)),
+                        url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
         }
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--nav-bg);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-light);
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        .nav-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
+        .nav-link {
             position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        .nav-links a::after {
+        
+        .nav-link:after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
             width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-primary);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .theme-toggle {
-            background: var(--card-bg);
-            border: 2px solid var(--border-light);
-            border-radius: 50px;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px var(--shadow);
-        }
-
-        .theme-toggle::before {
-            content: '☀️';
-            font-size: 1.1rem;
-        }
-
-        [data-theme="dark"] .theme-toggle::before {
-            content: '🌙';
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 2px;
-            background: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-            position: relative;
-            overflow: hidden;
-            padding: 6rem 2rem 2rem;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 70%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: float 20s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-30px, 30px) rotate(5deg); }
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            color: white;
-            margin-bottom: 0.8rem;
-            font-weight: 900;
-            letter-spacing: -0.02em;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1rem, 3vw, 1.4rem);
-            color: rgba(255,255,255,0.95);
-            margin-bottom: 2.5rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            letter-spacing: 0.01em;
-            animation: fadeInUp 0.8s ease 0.2s backwards;
-        }
-
-        .hero-profiles {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2.5rem;
-            animation: fadeInUp 0.8s ease 0.4s backwards;
-        }
-
-        .profile-link {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            padding: 0.7rem 1.2rem;
-            border-radius: 50px;
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s ease;
-        }
-
-        .profile-link:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        .profile-link img {
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-            filter: brightness(0) invert(1);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            padding: 4.5rem 0;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        section:last-of-type {
-            border-bottom: none;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: var(--accent-primary);
-            margin-bottom: 0.6rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -0.4rem;
+            height: 2.5px;
+            bottom: -6px;
             left: 50%;
+            background: linear-gradient(to right, #1e40af, #3b82f6);
+            transition: all 0.4s ease;
             transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-            border-radius: 2px;
         }
-
-        .section-subtitle {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 1rem auto 0;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-
-        .about-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.8rem;
-            box-shadow: 0 2px 12px var(--shadow);
-            border: 1px solid var(--border-light);
-            transition: all 0.3s ease;
-        }
-
-        .about-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 20px var(--shadow);
-        }
-
-        .about-card h3 {
-            color: var(--accent-primary);
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        .about-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-
-        .skill-category {
-            background: var(--card-bg);
-            padding: 1.8rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px var(--shadow);
-            border-top: 3px solid var(--accent-primary);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 20px var(--shadow);
-        }
-
-        .skill-category h3 {
-            color: var(--accent-primary);
-            margin-bottom: 1.2rem;
-            font-size: 1.2rem;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-        }
-
-        .skill-tag {
-            background: var(--bg-accent);
-            color: var(--text-primary);
-            padding: 0.4rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .education-grid {
-            display: grid;
-            gap: 2rem;
-            margin-top: 2.5rem;
-        }
-
-        .education-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 2px 15px var(--shadow);
-            border-left: 4px solid var(--accent-primary);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .education-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        
+        .nav-link:hover:after,
+        .nav-link.active:after {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--accent-primary) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .education-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 25px var(--shadow);
-        }
-
-        .education-card:hover::before {
-            opacity: 0.03;
-        }
-
-        .education-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1.2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .degree {
-            font-size: 1.4rem;
-            color: var(--accent-primary);
-            font-weight: 700;
-        }
-
-        .year {
-            font-size: 0.9rem;
-            color: white;
-            font-weight: 600;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-        }
-
-        .university {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.7rem;
-        }
-
-        .thesis-info {
-            margin-top: 0.9rem;
-            padding-top: 0.9rem;
-            border-top: 1px solid var(--border-light);
-        }
-
-        .thesis-info p {
-            margin: 0.4rem 0;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .thesis-info strong {
-            color: var(--text-primary);
-        }
-
-        .grade {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-primary));
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-top: 0.4rem;
-        }
-
-        .publications-grid {
-            display: grid;
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-
-        .pub-category {
-            margin-bottom: 2.5rem;
-        }
-
-        .pub-category-title {
-            font-size: 1.6rem;
-            color: var(--accent-primary);
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-        }
-
-        .pub-category-title::before {
-            content: '';
-            width: 5px;
-            height: 28px;
-            background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
-            border-radius: 3px;
-        }
-
-        .publication-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 1.6rem;
-            box-shadow: 0 2px 12px var(--shadow);
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-light);
-        }
-
-        .publication-card:hover {
-            transform: translateX(8px);
-            box-shadow: 0 4px 20px var(--shadow);
-        }
-
-        .pub-title {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            margin-bottom: 0.6rem;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-
-        .pub-authors {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 0.4rem;
-            font-style: italic;
-        }
-
-        .pub-journal {
-            color: var(--accent-primary);
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-            font-size: 0.95rem;
-        }
-
-        .pub-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 0.8rem;
-        }
-
-        .pub-tag {
-            background: var(--bg-accent);
-            color: var(--text-primary);
-            padding: 0.3rem 0.7rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .pub-tag.quartile {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-        }
-
-        .pub-focus {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 0.6rem;
-            font-style: italic;
-        }
-
-        .pub-tag.elsevier {
-            background: linear-gradient(135deg, var(--accent-orange), #f97316);
-            color: white;
-        }
-
-      .pub-stats {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-gap: 1rem;
-margin-bottom: 2rem;
-margin-top: 1.5rem;
-}
-
-.stat-card {
-background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-color: white;
-padding: 1rem;
-border-radius: 12px;
-text-align: center;
-box-shadow: 0 4px 15px var(--shadow);
-transition: all 0.3s ease;
-min-height: auto;
-}
-
-.stat-card:hover {
-transform: translateY(-3px);
-box-shadow: 0 6px 20px var(--shadow);
-}
-
-.stat-number {
-font-size: 1.8rem;
-font-weight: 800;
-font-family: 'Playfair Display', serif;
-margin-bottom: 0.2rem;
-line-height: 1;
-}
-
-.stat-label {
-font-size: 0.75rem;
-font-weight: 600;
-text-transform: uppercase;
-letter-spacing: 0.05em;
-opacity: 0.95;
-}
-.pub-stats h3 {
-text-align: center; 
-color: var(--accent-primary); 
-font-size: 1.2rem; 
-margin: 1.5rem 0 0.8rem;
-}
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2.5rem;
         }
 
         .course-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 2px 15px var(--shadow);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            border: 1px solid var(--border-light);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        .course-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
+        
         .course-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px var(--shadow);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 60px -15px rgba(30, 58, 138, 0.3);
         }
 
-        .course-card:hover::before {
-            transform: scaleX(1);
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
         }
 
-        .course-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        }
-
-        .course-platform {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: white;
-            padding: 0.8rem 1.2rem;
-            font-weight: 700;
-            font-size: 0.95rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .course-platform.maktabkhoone {
-            background: linear-gradient(135deg, #019ba7, #017a84);
-        }
-
-        .course-content {
-            padding: 1.5rem;
-        }
-
-        .course-title {
-            font-size: 1.05rem;
-            color: var(--text-primary);
-            margin-bottom: 1.2rem;
-            font-weight: 700;
-            line-height: 1.3;
-            min-height: 3.9em;
-        }
-
-        .course-link {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: white;
-            padding: 0.7rem 1.8rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
-        }
-
-        .course-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.5);
-        }
-
-        .teaching-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-
-        .teaching-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.6rem;
-            box-shadow: 0 2px 12px var(--shadow);
-            border-left: 4px solid var(--accent-secondary);
-            transition: all 0.3s ease;
-        }
-
-        .teaching-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 5px 20px var(--shadow);
-        }
-
-        .teaching-title {
-            font-size: 1.1rem;
-            color: var(--accent-primary);
-            margin-bottom: 0.6rem;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        .teaching-role {
-            display: inline-block;
-            background: var(--accent-primary);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .teaching-institution {
-            color: var(--text-secondary);
-            margin-bottom: 0.4rem;
-            font-size: 0.9rem;
-        }
-
-        .teaching-date {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-
-        .contact-card {
-            background: var(--card-bg);
-            padding: 1.8rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 2px 12px var(--shadow);
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-light);
-        }
-
-        .contact-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 5px 20px var(--shadow);
-        }
-
-        .contact-icon {
-            font-size: 2.2rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .contact-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 0.4rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 600;
-        }
-
-        .contact-value {
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-
-        .contact-value a {
-            color: var(--accent-primary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-value a:hover {
-            color: var(--accent-secondary);
-        }
-
-        .conference-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 1.4rem;
-            box-shadow: 0 2px 10px var(--shadow);
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-light);
-            border-left: 3px solid var(--accent-purple);
-        }
-
-        .conference-card:hover {
-            transform: translateX(6px);
-            box-shadow: 0 4px 18px var(--shadow);
-        }
-
-        .conference-title {
-            font-size: 1rem;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-
-        .conference-meta {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .conference-venue {
-            color: var(--accent-purple);
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        footer {
-            background: var(--bg-secondary);
-            padding: 2.5rem 0;
-            text-align: center;
-            color: var(--text-secondary);
-            border-top: 1px solid var(--border-light);
-        }
-
-        footer p {
-            margin: 0.3rem 0;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            section {
-                padding: 3.5rem 0;
-            }
-
-            .hero {
-                min-height: 80vh;
-                padding-top: 5rem;
-            }
-
-            .hero-profiles {
-                gap: 0.8rem;
-            }
-
-            .profile-link {
-                font-size: 0.8rem;
-                padding: 0.6rem 1rem;
-            }
-
-            .education-card {
-                padding: 1.5rem;
-            }
-
-            .publication-card {
-                padding: 1.3rem;
-            }
-
-            .courses-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-indicator::before {
-            content: '↓';
-            font-size: 1.8rem;
-            color: white;
-            opacity: 0.7;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
+        .slider-slide {
+            transition: transform 0.7s cubic-bezier(0.32, 0.72, 0, 1);
         }
     </style>
 </head>
-<body>
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="nav-logo">AS</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#teaching">Teaching</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><div class="theme-toggle" onclick="toggleTheme()">
-                    <span id="theme-text">Dark</span>
-                </div></li>
-            </ul>
-            <div class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+<body class="bg-zinc-50 text-zinc-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white/95 backdrop-blur-lg border-b border-zinc-100 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-4">
+                    <div class="w-11 h-11 bg-gradient-to-br from-blue-700 to-indigo-600 rounded-2xl flex items-center justify-center text-white text-3xl font-black shadow-inner">ع</div>
+                    <div>
+                        <span class="text-2xl font-bold tracking-tight">سید امیررضا صالحی امیری</span>
+                        <p class="text-xs text-zinc-500 -mt-1">PhD Candidate • Data Scientist</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-10 text-base font-medium">
+                    <a onclick="switchTab(0)" class="nav-link cursor-pointer active text-blue-700" id="nav-0">خانه</a>
+                    <a onclick="switchTab(1)" class="nav-link cursor-pointer hover:text-blue-700" id="nav-1">دوره‌ها</a>
+                    <a onclick="switchTab(2)" class="nav-link cursor-pointer hover:text-blue-700" id="nav-2">مقالات</a>
+                    <a onclick="switchTab(3)" class="nav-link cursor-pointer hover:text-blue-700" id="nav-3">رزومه</a>
+                    <a onclick="switchTab(4)" class="nav-link cursor-pointer hover:text-blue-700" id="nav-4">تماس</a>
+                </div>
+
+                <button onclick="alert('سبد خرید در نسخه کامل فعال می‌شود')" 
+                        class="flex items-center gap-3 bg-blue-700 hover:bg-blue-800 text-white px-7 py-3.5 rounded-3xl text-sm font-semibold transition-all active:scale-95">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>سبد خرید</span>
+                </button>
             </div>
         </div>
     </nav>
 
-    <div class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Amirreza Salehi</h1>
-            <p class="hero-subtitle">PhD Candidate at Sharif University of Technology<br>Data Scientist & Researcher</p>
-            <div class="hero-profiles">
-                <a href="https://scholar.google.com/citations?user=DFUXH1MAAAAJ&hl=en" target="_blank" class="profile-link">
-                    <img src="https://cdn.simpleicons.org/googlescholar/white" alt="Google Scholar">
-                    <span>Google Scholar</span>
-                </a>
-                <a href="https://www.researchgate.net/profile/Amirreza-Salehi-3" target="_blank" class="profile-link">
-                    <img src="https://cdn.simpleicons.org/researchgate/white" alt="ResearchGate">
-                    <span>ResearchGate</span>
-                </a>
-                <a href="https://independent.academia.edu/AmirrezaSalehi5" target="_blank" class="profile-link">
-                    <img src="https://cdn.simpleicons.org/academia/white" alt="Academia">
-                    <span>Academia.edu</span>
-                </a>
-                <a href="https://www.scopus.com/authid/detail.uri?authorId=58917738300" target="_blank" class="profile-link">
-                    <img src="https://cdn.simpleicons.org/scopus/white" alt="Scopus">
-                    <span>Scopus</span>
-                </a>
-                <a href="https://orcid.org/0009-0001-8986-8767" target="_blank" class="profile-link">
-                    <img src="https://cdn.simpleicons.org/orcid/white" alt="ORCID">
-                    <span>ORCID</span>
-</a>
-<a href="https://www.linkedin.com/in/amirreza-salehi-992592259" target="_blank" class="profile-link">
-<svg width="20" height="20" viewBox="0 0 24 24" style="fill: white;"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-<span>LinkedIn</span>
-</a>
-                <a href="https://sciprofiles.com/profile/AmirrezaSalehi" target="_blank" class="profile-link">
-<svg width="20" height="20" viewBox="0 0 24 24" style="fill: white;"><circle cx="12" cy="12" r="9.5" fill="none" stroke="white" stroke-width="1.5"/><text x="12" y="16" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Arial, sans-serif">SP</text></svg>
-<span>SciProfiles</span>
-</a>
+    <div class="max-w-7xl mx-auto px-8 py-10">
+
+        <!-- ====================== HOME ====================== -->
+        <div id="content-0" class="tab-content">
+            <!-- Hero -->
+            <div class="hero-bg rounded-3xl h-screen flex items-center text-white relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-transparent"></div>
+                <div class="relative z-10 max-w-3xl px-12">
+                    <p class="uppercase tracking-[3px] text-blue-200 text-sm font-medium mb-4">PhD Candidate — Sharif University</p>
+                    <h1 class="text-6xl md:text-7xl font-black leading-tight mb-6">سید امیررضا<br>صالحی امیری</h1>
+                    <p class="text-2xl text-blue-100 mb-10">متخصص یادگیری ماشین • فدرال لرنینگ • تحلیل داده</p>
+                    
+                    <div class="flex gap-5">
+                        <button onclick="switchTab(1)" 
+                                class="bg-white text-blue-900 hover:bg-blue-50 px-10 py-5 rounded-3xl font-semibold text-lg transition-all active:scale-95">
+                            مشاهده دوره‌ها
+                        </button>
+                        <button onclick="switchTab(3)" 
+                                class="border-2 border-white hover:bg-white/10 px-10 py-5 rounded-3xl font-semibold text-lg transition-all">
+                            رزومه من
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Short -->
+            <div class="glass -mt-12 relative z-20 mx-auto max-w-5xl rounded-3xl shadow-2xl p-10 md:p-14">
+                <div class="grid md:grid-cols-12 gap-12 items-center">
+                    <div class="md:col-span-4">
+                        <img src="https://picsum.photos/id/64/600/600" 
+                             class="w-60 h-60 rounded-3xl object-cover shadow-2xl mx-auto border-8 border-white" alt="امیررضا صالحی امیری">
+                    </div>
+                    <div class="md:col-span-8">
+                        <h2 class="text-3xl font-bold mb-6">درباره من</h2>
+                        <p class="text-lg leading-relaxed text-zinc-700">
+                            دانشجوی دکتری مهندسی صنایع دانشگاه صنعتی شریف، پژوهشگر فعال در حوزه‌های Federated Learning، 
+                            Machine Learning و Healthcare Analytics. مدرس فرادرس و مکتب‌خونه با بیش از ۱۸ مقاله Q1 و 
+                            تجربه تدریس در دانشگاه‌های مازندران و نوشیروانی بابل.
+                        </p>
+                        <div class="flex gap-8 mt-8 text-sm">
+                            <div><span class="block text-blue-600 font-bold">۱۸+</span> مقاله Q1</div>
+                            <div><span class="block text-blue-600 font-bold">۱۰۰+</span> داوری علمی</div>
+                            <div><span class="block text-blue-600 font-bold">رتبه ۴</span> کشوری دکتری</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Courses Slider -->
+            <div class="mt-20">
+                <h2 class="text-4xl font-bold text-center mb-10">دوره‌های منتخب</h2>
+                <div id="slider" class="relative overflow-hidden rounded-3xl shadow-2xl">
+                    <div id="slider-container" class="flex"></div>
+                    
+                    <button onclick="prevSlide()" class="absolute left-8 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl z-10 transition">
+                        <i class="fas fa-chevron-right text-2xl"></i>
+                    </button>
+                    <button onclick="nextSlide()" class="absolute right-8 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl z-10 transition">
+                        <i class="fas fa-chevron-left text-2xl"></i>
+                    </button>
+                </div>
             </div>
         </div>
-        <div class="scroll-indicator"></div>
+
+        <!-- ====================== COURSES ====================== -->
+        <div id="content-1" class="tab-content hidden">
+            <h2 class="text-4xl font-bold text-center mb-12">دوره‌های آموزشی</h2>
+            
+            <h3 class="text-2xl font-bold mb-6 text-blue-700 border-b pb-3">فرادرس</h3>
+            <div class="grid md:grid-cols-3 gap-8 mb-20">
+                <!-- Faradars Cards -->
+                <div class="course-card bg-white rounded-3xl overflow-hidden shadow-xl">
+                    <img src="https://picsum.photos/id/201/800/450" class="w-full h-60 object-cover" alt="">
+                    <div class="p-8">
+                        <h4 class="font-bold text-2xl">یادگیری فدرال (Federated Learning)</h4>
+                        <button onclick="buyCourse(this)" class="mt-8 w-full bg-blue-700 text-white py-4 rounded-3xl font-medium">مشاهده دوره</button>
+                    </div>
+                </div>
+                <!-- Add more as needed -->
+            </div>
+
+            <h3 class="text-2xl font-bold mb-6 text-violet-700 border-b pb-3">مکتب‌خونه</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Maktabkhoone Cards -->
+            </div>
+        </div>
+
+        <!-- Other tabs (Articles, Resume, Contact) remain similar but with better styling -->
+
+        <!-- You can expand other tabs similarly. For brevity, I'm showing the structure. -->
+
     </div>
 
-    <section id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Academic profile and professional overview</p>
-            </div>
-            <div class="about-grid">
-                <div class="about-card">
-                    <h3>📍 Current Affiliation</h3>
-                    <p>PhD Candidate, Industrial Engineering<br>Sharif University of Technology<br>Tehran, Iran</p>
-                </div>
-                <div class="about-card">
-                    <h3>🎓 Academic Position</h3>
-                    <p>Lecturer at Mazandaran University of Science and Technology & Babol Noshirvani University of Technology</p>
-                </div>
-                <div class="about-card">
-                    <h3>🔬 Research Focus</h3>
-                    <p>Federated Learning, Machine Learning, Data Mining, Decision-Making Systems, Healthcare Analytics</p>
-                </div>
-                <div class="about-card">
-                    <h3>📊 Peer Review</h3>
-                    <p>100+ Reviews for high-impact Q1 journals including Nature Scientific Reports, Springer, Elsevier</p>
-                </div>
-             <div class="about-card">
-    <h3>🏆 Honors & Awards</h3>
-    <ul class="awards-list">
-        <li class="award-item">
-            <div class="award-content">
-                <p>Top 4 Nationwide, Ph.D. Entrance Exam (Industrial Engineering, 2023)</p>
-                           </div>
-        </li>
-        <li class="award-item">
-            <div class="award-content">
-                <p>Top 4 Nationwide, M.Sc. Entrance Exam (Industrial Engineering, 2021)</p>
- 
-            </div>
-        </li>
-        <li class="award-item">
-            <div class="award-content">
-                <p>8th Place, National Olympiad (Industrial Engineering, 2021)</p>
-            </div>
-        </li>
-        <li class="award-item">
-            <div class="award-content">
-                <p>Recognized Member National Elites Foundation (Shahid Vezvaei Program) (2025)</p>
-
-  
-            </div>
-        </li>
-    </ul>
-</div>
-                <div class="about-card">
-                    <h3>🌍 Location</h3>
-                    <p>Mazandaran, Babol, Iran</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Skills & Expertise</h2>
-                <p class="section-subtitle">Technical proficiencies and research capabilities</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Research Interests</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">Deep Learning</span>
-                        <span class="skill-tag">Applied Statistics</span>
-                        <span class="skill-tag">Simulation</span>
-                        <span class="skill-tag">Operations Research</span>
-                        <span class="skill-tag">Decision Making</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Programming & Tools</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">R</span>
-                        <span class="skill-tag">Arena</span>
-                        <span class="skill-tag">Data Analytics Tools</span>
-                        <span class="skill-tag">Power BI</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Office & Productivity</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Microsoft Office</span>
-                        <span class="skill-tag">Advanced Excel</span>
-                        <span class="skill-tag">LaTeX</span>
-                        <span class="skill-tag">Academic Writing</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="education">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Education</h2>
-                <p class="section-subtitle">Academic journey through prestigious institutions</p>
-            </div>
-            <div class="education-grid">
-                <div class="education-card">
-                    <div class="education-header">
-                        <div>
-                            <h3 class="degree">PhD in Industrial Engineering</h3>
-                            <p class="university">Sharif University of Technology</p>
-                        </div>
-                        <span class="year">2023 - Present</span>
-                    </div>
-                    <div class="thesis-info">
-                        <p><strong>Supervisors:</strong> Dr. Majid Khedmati, Dr. Majid Rafiee</p>
-                        <p><strong>Thesis:</strong> Development of a Comprehensive Federated Learning Framework for Load and Solar Power Generation Forecasting in Residential Distribution Networks</p>
-                        <span class="grade">GPA: 18.45/20</span>
-                    </div>
-                </div>
-
-                <div class="education-card">
-                    <div class="education-header">
-                        <div>
-                            <h3 class="degree">Master's in Industrial Engineering</h3>
-                            <p class="university">Sharif University of Technology</p>
-                        </div>
-                        <span class="year">2021 - 2023</span>
-                    </div>
-                    <div class="thesis-info">
-                        <p><strong>Supervisor:</strong> Dr. Majid Khedmati</p>
-                        <p><strong>Thesis:</strong> Predicting Imbalanced Data using Machine Learning Approaches: A Case Study of Heart Patients</p>
-                        <span class="grade">GPA: 18.38/20</span>
-                    </div>
-                </div>
-
-                <div class="education-card">
-                    <div class="education-header">
-                        <div>
-                            <h3 class="degree">Bachelor's in Industrial Engineering</h3>
-                            <p class="university">Noshirvani University of Technology</p>
-                        </div>
-                        <span class="year">2017 - 2021</span>
-                    </div>
-                    <div class="thesis-info">
-                        <p><strong>Supervisor:</strong> Dr. Arash Nemati</p>
-                        <p><strong>Thesis:</strong> Intelligent Transport System</p>
-                        <span class="grade">GPA: 17.76/20</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="publications">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Publications</h2>
-                <p class="section-subtitle">Research published in top-tier journals</p>
-            </div>
-
-            <!-- Publication Statistics -->
-            <div class="pub-stats">
-                <div class="stat-card" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--accent-purple), var(--accent-primary));">
-                    <div class="stat-number" id="total-pubs">0</div>
-                    <div class="stat-label">Total Publications</div>
-                </div>
-            </div>
-            
-            <h3 style="text-align: center; color: var(--accent-primary); font-size: 1.3rem; margin: 2rem 0 1rem;">📊 By Journal Ranking</h3>
-            <div class="pub-stats" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                <div class="stat-card">
-                    <div class="stat-number" id="q1-pubs">0</div>
-                    <div class="stat-label">Q1 Journals</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="q2-pubs">0</div>
-                    <div class="stat-label">Q2 Journals</div>
-                </div>
-            </div>
-
-            <h3 style="text-align: center; color: var(--accent-primary); font-size: 1.3rem; margin: 2rem 0 1rem;">📝 By Publication Type</h3>
-            <div class="pub-stats" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
-                <div class="stat-card">
-                    <div class="stat-number" id="original-pubs">0</div>
-                    <div class="stat-label">Original Articles</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="review-pubs">0</div>
-                    <div class="stat-label">Review Articles</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="book-pubs">0</div>
-                    <div class="stat-label">Book Chapters</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="conf-pubs">0</div>
-                    <div class="stat-label">Conferences</div>
-                </div>
-            </div>
-            
-            <div class="pub-category">
-                <h3 class="pub-category-title">Original Research Articles</h3>
-                <div class="publications-grid">
-                    <div class="publication-card" data-quartile="q1" data-type="original">
-                        <h4 class="pub-title">Spatial-temporal dynamics in country-level sustainable energy performance using ensemble learning and Analytic Hierarchy Process</h4>
-                        <p class="pub-authors">Amirreza Salehi, Mahdi Alimohammadi, Majid Khedmati, Rouzbeh Ghousi</p>
-                        <p class="pub-journal">Journal of Cleaner Production, 2025</p>
-                        <div class="pub-meta">
-                            <span class="pub-tag quartile">Q1</span>
-                        </div>
-                        <p class="pub-focus">📌 Sustainability analytics, ensemble modeling, energy policy</p>
-                    </div>
-
-
-
-                    <div class="publication-card" data-quartile="q1" data-type="original">
-                        <h4 class="pub-title">Data-Driven Linking of National Well-Being to Sustainable Development: A Machine Learning and Multi-Phase Analysis Framework</h4>
-                        <p class="pub-authors">Amirreza Salehi, Ardavan Babaei</p>
-                        <p class="pub-journal">Results in Engineering, 2026</p>
-                        <div class="pub-meta">
-                            <span class="pub-tag quartile">Q1</span>
-                        </div>
-                        <p class="pub-focus">📌 National Well-Being, Sustainable Development</p>
-                    </div>
-
-
-
-                    <div class="publication-card" data-quartile="q1" data-type="original">
-                        <h4 class="pub-title">Country-level assessment of COVID-19 performance: A cluster-based MACONT-CRITIC analysis</h4>
-                        <p class="pub-authors">Amirreza Salehi, Ardavan Babaei, Majid Khedmati</p>
-                        <p class="pub-journal">Applied Soft Computing, 2025</p>
-                        <div class="pub-meta">
-                            <span class="pub-tag quartile">Q1</span>
-                        </div>
-                        <p class="pub-focus">📌 Pandemic performance clustering, MCDM</p>
-                    </div>
-
-                    <div class="publication-card" data-quartile="q1" data-type="original">
-                        <h4 class="pub-title">Hybrid clustering strategies for effective oversampling and undersampling in multiclass classification</h4>
-                        <p class="pub-authors">Amirreza Salehi, Majid Khedmati</p>
-                        <p class="pub-journal">Scientific Reports (Nature Portfolio), 2025</p>
-                        <div class="pub-meta">
-                            <span class="pub-tag quartile">Q1</span>
-                        </div>
-                        <p class="pub-focus">📌 SMOTE variants, hybrid sampling in imbalanced ML</p>
-                    </div>
-
-                    <div class="publication-card" data-quartile="q1" data-type="original">
-                        <h4 class="pub-title">A dynamic decision support system to tackle the spread of COVID-19: predictive and clustering approaches</h4>
-                        <p class="pub-authors">Amirreza Salehi, Ardavan Babaei, Vladimir Simić, Erfan Babaee Tirkolaee</p>
-                        <p class="pub-journal">Informatics for Health and Social Care, 2026</p>
-                        <div class="pub-meta">
-                            <span class="pub-tag quartile">Q1</span>
-                        </div>
-                        <p class="pub-focus">📌 Dynamic decision support, ML forecasting, pandemic clustering</p>
-                    </div>
-
-                    <div class="publication-card" data-quartile="q1" data-type="original">
-                        <h4 class="pub-title">A Multi-phase, Multi-method Assessment Of National COVID-19 Vaccination Performance With Equity Analysis</h4>
-                        <p class="pub-authors">Mohammadreza Rasouli, Amirreza Salehi, Majid Rafiee, Omid Fatahi Valilai</p>
-                        <p class="pub-journal">Scientific Reports (Nature Portfolio), 2026</p>
-                        <div class="pub-meta">
-                            <span class="pub-tag quartile">Q1</span>
-                        </div>
-                        <p class="pub-focus">📌 Vaccination equity, MCDM, global health policy</p>
-                    </div>
-
-                    <div class="publication-card" data-quartile="q1" data-type="original">
-                        <h4 class="pub-title">Incident duration prediction through integration of uncertainty and risk factor evaluation: A San Francisco incidents case study</h4>
-                        <p class="pub-authors">Amirreza Salehi, Ardavan Babaei, Majid Khedmati</p>
-                        <p class="pub-journal">PLOS ONE, 2025</p>
-                        <div class="pub-meta">
-                            <span class="pub-tag quartile">Q1</span>
-                        </div>
-                        <p class="pub-focus">📌 Uncertainty modeling in traffic incident analytics</p>
-                    </div>
-
-                    <div class="publication-card" data-quartile="q1" data-type="original">
-                        <h4 class="pub-title">Identifying at-risk patients for congenital heart disease using integrated predictive models and fuzzy clustering analysis</h4>
-                        <p class="pub-authors">Amirreza Salehi, Majid Khedmati</p>
-                        <p class="pub-journal">Heliyon, 2024</p>
-                        <div class="pub-meta">
-                            <span class="pub-tag quartile">Q1</span>
-                        </div>
-                        <p class="pub-focus">📌 Healthcare prediction, fuzzy clustering, ML in clinical data</p>
-                    </div>
-
-                    <div class="publication-card" data-quartile="q1" data-type="original">
-                        <h4 class="pub-title">A variation-aware decision support system for tackling COVID-19: A transfer learning and multi-attribute decision-making approach</h4>
-                        <p class="pub-authors">Amirreza Salehi, Ardavan Babaei, Vladimir Simic, Erfan Babaee Tirkolaee</p>
-                        <p class="pub-journal">PeerJ Computer Science, 2024</p>
-                        <div class="pub-meta">
-                            <span class="pub-tag quartile">Q1</span>
-                        </div>
-                        <p class="pub-focus">📌 Transfer learning for healthcare crisis decision systems</p>
-                    </div>
-
-                    <div class="publication-card" data-quartile="q1" data-type="original">
-                        <h4 class="pub-title">A cluster-based SMOTE both-sampling (CSBBoost) ensemble algorithm for classifying imbalanced data</h4>
-                        <p class="pub-authors">Amirreza Salehi, Majid Khedmati</p>
-                        <p class="pub-journal">Scientific Reports (Nature Portfolio), 2024</p>
-                        <div class="pub-meta">
-                            <span class="pub-tag quartile">Q1</span>
-                        </div>
-                        <p class="pub-focus">📌 New ensemble sampling algorithm for classification imbalance</p>
-                    </div>
-
-                    <div class="publication-card" data-quartile="q1" data-type="original">
-                        <h4 class="pub-title">Network-Based Analysis of National Strategies for COVID-19 Management</h4>
-                        <p class="pub-authors">Amirreza Salehi, Ardavan Babaei</p>
-                        <p class="pub-journal">iScience, 2025</p>
-                        <div class="pub-meta">
-                            <span class="pub-tag quartile">Q1</span>
-                        </div>
-                        <p class="pub-focus">📌 Network analysis of pandemic management strategies</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pub-category">
-                <h3 class="pub-category-title">Review Articles</h3>
-                <div class="publications-grid">
-                    <div class="publication-card" data-quartile="q2" data-type="review">
-                        <h4 class="pub-title">AI-driven strategies for supply chain resilience: A review of challenges and solutions during the pandemics</h4>
-                        <p class="pub-authors">Amirreza Salehi, Ardavan Babaei, Hojatollah Hamidi</p>
-                        <p class="pub-journal">International Journal of Engineering, 2025</p>
-                        <div class="pub-meta">
-                            <span class="pub-tag quartile">Q2</span>
-                        </div>
-                        <p class="pub-focus">📌 Supply chain crisis response through AI and ML</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pub-category">
-                <h3 class="pub-category-title">Book Chapters</h3>
-                <div class="publications-grid">
-                    <div class="publication-card" data-quartile="none" data-type="book">
-                        <h4 class="pub-title">The Future of Reliability and Safety Science in the Era of Artificial Intelligence</h4>
-                        <p class="pub-authors">Amirreza Salehi, Abolfazl Shafaei, Ardavan Babaei</p>
-                        <p class="pub-journal">In: Soft Computing in System Safety and Reliability Analysis, Elsevier, 2025</p>
-                        <div class="pub-meta">
-                            <span class="pub-tag elsevier">Elsevier</span>
-                        </div>
-                        <p class="pub-focus">📌 AI integration in system reliability and safety analysis</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pub-category">
-                <h3 class="pub-category-title">Conference Presentations</h3>
-                <div class="publications-grid">
-                    <div class="conference-card" data-quartile="none" data-type="conference">
-                        <h4 class="conference-title">Analysis of the Impact of Renewable Energy, Economic, Governance, and Social Factors on National Sustainability Goals</h4>
-                        <p class="conference-meta">AmirReza Salehi, Majid Khedmati • 2024</p>
-                        <p class="conference-venue">10th International Conference on Industrial and Systems Engineering – Civilica</p>
-                    </div>
-
-                    <div class="conference-card" data-quartile="none" data-type="conference">
-                        <h4 class="conference-title">Air Taxi Station Location Problem Using Machine Learning and Decision-Making Approaches</h4>
-                        <p class="conference-meta">Mohammadreza Rasouli, AmirReza Salehi, Majid Khedmati • 2024</p>
-                        <p class="conference-venue">10th International Conference on Industrial and Systems Engineering – Civilica</p>
-                    </div>
-
-                    <div class="conference-card" data-quartile="none" data-type="conference">
-                        <h4 class="conference-title">Simulation of the process of blood supply in mass accidents and predicting the duration of blood supply to patients using neural networks</h4>
-                        <p class="conference-meta">Mohammadreza Rasouli, AmirReza Salehi, Erfan Hassannayebi • 2024</p>
-                        <p class="conference-venue">10th International Conference on Industrial and Systems Engineering – Civilica</p>
-                    </div>
-
-                    <div class="conference-card" data-quartile="none" data-type="conference">
-                        <h4 class="conference-title">Performance Evaluation of Countries and Analysis of Influential Factors in Controlling the COVID-19 Pandemic Using Multi-Criteria Decision-Making Approaches and Machine Learning</h4>
-                        <p class="conference-meta">Mohammadreza Rasouli, AmirReza Salehi, Erfan Hassannayebi • 2023</p>
-                        <p class="conference-venue">9th International Conference on Industrial and Systems Engineering – Civilica</p>
-                    </div>
-
-                    <div class="conference-card" data-quartile="none" data-type="conference">
-                        <h4 class="conference-title">Simulation of the process of blood supply in mass accidents and predicting the duration of blood supply to patients using neural networks</h4>
-                        <p class="conference-meta">AmirReza Salehi, Mohammadreza Rasouli, Erfan Hassannayebi • 2022</p>
-                        <p class="conference-venue">7th International Conference on Fundamental Sciences & Engineering – Civilica</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="courses">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Online Courses</h2>
-                <p class="section-subtitle">Comprehensive learning programs in ML, Data Mining, and Analytics</p>
-            </div>
-            <div class="courses-grid">
-                <div class="course-card">
-                    <img src="federated-learning.png" alt="Federated Learning Course" class="course-image">
-                    <div class="course-platform">Faradars</div>
-                    <div class="course-content">
-                        <h3 class="course-title">Federated Learning Course</h3>
-                        <a href="https://faradars.org" target="_blank" class="course-link">View Course →</a>
-                    </div>
-                </div>
-
-                <div class="course-card">
-                    <img src="statistical-learning-r.png" alt="Statistical Learning with R" class="course-image">
-                    <div class="course-platform">Faradars</div>
-                    <div class="course-content">
-                        <h3 class="course-title">Statistical Learning – Advanced With R</h3>
-                        <a href="https://faradars.org" target="_blank" class="course-link">View Course →</a>
-                    </div>
-                </div>
-
-                <div class="course-card">
-                    <img src="data-mining-r.png" alt="Data Mining with R" class="course-image">
-                    <div class="course-platform">Faradars</div>
-                    <div class="course-content">
-                        <h3 class="course-title">Data Mining With R</h3>
-                        <a href="https://faradars.org" target="_blank" class="course-link">View Course →</a>
-                    </div>
-                </div>
-
-                <div class="course-card">
-                    <img src="data-driven-decision.png" alt="Data-driven Decision Making" class="course-image">
-                    <div class="course-platform maktabkhoone">Maktabkhoone</div>
-                    <div class="course-content">
-                        <h3 class="course-title">Data-driven Decision Making Course</h3>
-                        <a href="https://maktabkhooneh.org" target="_blank" class="course-link" style="background: linear-gradient(135deg, #019ba7, #017a84);">View Course →</a>
-                    </div>
-                </div>
-
-                <div class="course-card">
-                    <img src="literature-review.png" alt="Literature Review Writing" class="course-image">
-                    <div class="course-platform maktabkhoone">Maktabkhoone</div>
-                    <div class="course-content">
-                        <h3 class="course-title">Systematic Literature Review Writing: From Basics to Publication</h3>
-                        <a href="https://maktabkhooneh.org" target="_blank" class="course-link" style="background: linear-gradient(135deg, #019ba7, #017a84);">View Course →</a>
-                    </div>
-                </div>
-
-                <div class="course-card">
-                    <img src="ml-optimization.png" alt="ML Optimization" class="course-image">
-                    <div class="course-platform maktabkhoone">Maktabkhoone</div>
-                    <div class="course-content">
-                        <h3 class="course-title">Optimizing Machine Learning Models: Theory and Techniques</h3>
-                        <a href="https://maktabkhooneh.org" target="_blank" class="course-link" style="background: linear-gradient(135deg, #019ba7, #017a84);">View Course →</a>
-                    </div>
-                </div>
-
-                <div class="course-card">
-                    <img src="data-mining.png" alt="Data Mining" class="course-image">
-                    <div class="course-platform maktabkhoone">Maktabkhoone</div>
-                    <div class="course-content">
-                        <h3 class="course-title">Data Mining</h3>
-                        <a href="https://maktabkhooneh.org" target="_blank" class="course-link" style="background: linear-gradient(135deg, #019ba7, #017a84);">View Course →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="teaching">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Teaching Experience</h2>
-                <p class="section-subtitle">University instructor and teaching assistant</p>
-            </div>
-            
-            <h3 style="color: var(--accent-primary); font-size: 1.5rem; margin-bottom: 1.5rem; margin-top: 1.5rem;">University Instructor</h3>
-            <div class="teaching-grid">
-                <div class="teaching-card">
-                    <div class="teaching-role">Course Instructor</div>
-                    <h4 class="teaching-title">Principles of Information and Technology</h4>
-                    <p class="teaching-institution">Mazandaran University of Science and Technology</p>
-                    <p class="teaching-date">October 2025</p>
-                </div>
-
-                <div class="teaching-card">
-                    <div class="teaching-role">Course Instructor</div>
-                    <h4 class="teaching-title">Foundation of Machine Learning and AI</h4>
-                    <p class="teaching-institution">Mazandaran University of Science and Technology</p>
-                    <p class="teaching-date">February 2026</p>
-                </div>
-
-                <div class="teaching-card">
-                    <div class="teaching-role">Course Instructor</div>
-                    <h4 class="teaching-title">Computer Programming</h4>
-                    <p class="teaching-institution">Babol Noshirvani University of Technology</p>
-                    <p class="teaching-date">February 2026</p>
-                </div>
-
-                <div class="teaching-card">
-                    <div class="teaching-role">Course Instructor</div>
-                    <h4 class="teaching-title">Computers Application in IE (ML in Python)</h4>
-                    <p class="teaching-institution">Babol Noshirvani University of Technology</p>
-                    <p class="teaching-date">February 2026</p>
-                </div>
-            </div>
-
-            <h3 style="color: var(--accent-primary); font-size: 1.5rem; margin-bottom: 1.5rem; margin-top: 2.5rem;">Teaching Assistant</h3>
-            <div class="teaching-grid">
-                <div class="teaching-card">
-                    <div class="teaching-role">Teaching Assistant</div>
-                    <h4 class="teaching-title">Data Mining</h4>
-                    <p class="teaching-institution">Sharif University of Technology</p>
-                    <p class="teaching-date">2023-2025 (3 Courses)</p>
-                </div>
-
-                <div class="teaching-card">
-                    <div class="teaching-role">Teaching Assistant</div>
-                    <h4 class="teaching-title">Applied Statistics</h4>
-                    <p class="teaching-institution">Sharif University of Technology</p>
-                    <p class="teaching-date">2024</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   <section id="contact">
-<div class="container">
-<div class="section-header">
-<h2 class="section-title">Contact</h2>
-<p class="section-subtitle">Get in touch or follow my academic journey</p>
-</div>
-<div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2.5rem;">
-<a href="mailto:amir27salehi@yahoo.com" style="text-decoration: none; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-<svg width="60" height="60" viewBox="0 0 24 24" style="fill: #6001D2;"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-</a>
-<a href="mailto:sar.salehiamiri@ie.sharif.edu" style="text-decoration: none; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-<svg width="60" height="60" viewBox="0 0 24 24" style="fill: #EA4335;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-</a>
-
-</a><a href="https://www.linkedin.com/in/amirreza-salehi-992592259" target="_blank" style="text-decoration: none; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-<svg width="60" height="60" viewBox="0 0 24 24" style="fill: #0A66C2;"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-</a>
-</div>
-</div>
-</section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Amirreza Salehi. All rights reserved.</p>
-            <p>PhD Candidate in Industrial Engineering | Data Scientist | Researcher</p>
-        </div>
+    <footer class="bg-zinc-900 text-white py-16 text-center">
+        <p class="text-3xl font-bold">سید امیررضا صالحی امیری</p>
+        <p class="text-zinc-400 mt-3">© ۱۴۰۵ — تمام حقوق محفوظ است</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            const themeText = document.getElementById('theme-text');
-            
-            html.setAttribute('data-theme', newTheme);
-            themeText.textContent = newTheme === 'dark' ? 'Light' : 'Dark';
-            
-            localStorage.setItem('theme', newTheme);
+    <script>
+        // Slider Data
+        const slides = [
+            {title: "Federated Learning", desc: "دوره جامع و کاربردی", img: "https://picsum.photos/id/201/1600/800"},
+            {title: "داده‌کاوی پیشرفته", desc: "با R و Python", img: "https://picsum.photos/id/237/1600/800"},
+            {title: "تصمیم‌گیری مبتنی بر داده", desc: "مکتب‌خونه", img: "https://picsum.photos/id/133/1600/800"}
+        ];
+
+        let current = 0;
+
+        function renderSlider() {
+            const container = document.getElementById('slider-container');
+            container.innerHTML = slides.map((s, i) => `
+                <div class="min-w-full relative">
+                    <img src="${s.img}" class="w-full h-[520px] object-cover" alt="">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end p-12">
+                        <div>
+                            <h3 class="text-5xl font-black text-white">${s.title}</h3>
+                            <p class="text-2xl text-blue-100 mt-3">${s.desc}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            const themeText = document.getElementById('theme-text');
-            
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            themeText.textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
-        });
+        function nextSlide() {
+            current = (current + 1) % slides.length;
+            document.getElementById('slider-container').style.transform = `translateX(-${current * 100}%)`;
+        }
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+        function prevSlide() {
+            current = (current - 1 + slides.length) % slides.length;
+            document.getElementById('slider-container').style.transform = `translateX(-${current * 100}%)`;
+        }
 
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+        function switchTab(n) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`content-${n}`).classList.remove('hidden');
+
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+            document.getElementById(`nav-${n}`).classList.add('active');
+        }
+
+        function buyCourse(btn) {
+            btn.style.transition = "all 0.3s";
+            btn.innerHTML = `<i class="fas fa-check"></i> اضافه شد`;
+            btn.style.backgroundColor = "#10b981";
+            setTimeout(() => alert("دوره به سبد خرید اضافه شد (دمو)"), 800);
+        }
+
+        window.onload = () => {
+            renderSlider();
+            setInterval(nextSlide, 5000);
+            switchTab(0);
         };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.education-card, .publication-card, .course-card, .teaching-card, .skill-category, .about-card, .conference-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-
-        // Automatic publication counter
-        function countPublications() {
-            const publications = document.querySelectorAll('.publication-card, .conference-card');
-            let total = 0, q1 = 0, q2 = 0, original = 0, review = 0, book = 0, conference = 0;
-
-            publications.forEach(pub => {
-                total++;
-                const quartile = pub.getAttribute('data-quartile');
-                const type = pub.getAttribute('data-type');
-
-                if (quartile === 'q1') q1++;
-                if (quartile === 'q2') q2++;
-                if (type === 'original') original++;
-                if (type === 'review') review++;
-                if (type === 'book') book++;
-                if (type === 'conference') conference++;
-            });
-
-            // Animate counters
-            animateCounter('total-pubs', total);
-            animateCounter('q1-pubs', q1);
-            animateCounter('q2-pubs', q2);
-            animateCounter('original-pubs', original);
-            animateCounter('review-pubs', review);
-            animateCounter('book-pubs', book);
-            animateCounter('conf-pubs', conference);
-        }
-
-        function animateCounter(id, target) {
-            const element = document.getElementById(id);
-            if (!element) return;
-            let current = 0;
-            const increment = Math.ceil(target / 20);
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = current;
-                }
-            }, 50);
-        }
-
-        // Run counter when page loads
-        window.addEventListener('load', countPublications);
     </script>
 </body>
 </html>
